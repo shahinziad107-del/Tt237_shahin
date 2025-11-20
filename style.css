@@ -1,0 +1,245 @@
+/* ملف: style.css */
+
+/* المتغيرات والألوان الأساسية */
+:root {
+    --primary-blue: #3498db;
+    --primary-green: #2ecc71;
+    --primary-orange: #e67e22;
+    --primary-purple: #9b59b6;
+    --primary-red: #e74c3c;
+    --glass-bg: rgba(0, 0, 0, 0.85); /* خلفية داكنة للبطاقات */
+    --nav-bg: rgba(0, 0, 0, 0.95);
+    --text-color: #ecf0f1;
+}
+
+/* إعدادات عامة */
+* {
+    box-sizing: border-box; /* مهم جداً لضبط الأحجام */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-image: url('1000001321.jpg'); /* تأكد أن اسم الصورة صحيح */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* تثبيت الخلفية */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6); /* طبقة تظليل */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- تصميم القائمة العلوية (NAVBAR) --- */
+nav {
+    background: var(--nav-bg);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.logo span { color: var(--primary-blue); }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a, .back-btn {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav a:hover, .back-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.back-btn {
+    border: 1px solid #fff;
+}
+
+/* --- الحاويات والشبكة (GRID) --- */
+.container, .downloads-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px; /* هوامش جانبية للحماية من الحواف */
+    display: grid;
+    /* هذا السطر السحري يجعل البطاقات تترتب تلقائياً حسب حجم الشاشة */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
+    width: 100%;
+}
+
+/* --- تصميم البطاقات --- */
+.card, .download-card {
+    background: var(--glass-bg);
+    padding: 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* ألوان الحدود العلوية */
+.history-card { border-top: 4px solid var(--primary-blue); }
+.env-card { border-top: 4px solid var(--primary-green); }
+.struct-card { border-top: 4px solid var(--primary-orange); }
+.culture-card { border-top: 4px solid var(--primary-purple); }
+.ppt-card { border-top: 5px solid var(--primary-red); }
+.pdf-card { border-top: 5px solid var(--primary-green); }
+
+/* النصوص داخل البطاقات */
+h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin: 40px 0;
+    padding: 0 15px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+ul { padding-left: 20px; margin-bottom: 20px; }
+li { margin-bottom: 6px; color: #ccc; font-size: 0.95rem; }
+p { color: #ccc; font-size: 0.95rem; }
+
+/* --- الأزرار --- */
+.download-btn {
+    display: block; /* يملأ العرض في الموبايل */
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 0;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.download-btn:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.download-btn.ppt { background: #c0392b; }
+.download-btn.ppt:hover { background: #e74c3c; }
+
+.icon { font-size: 3rem; margin-bottom: 15px; text-align: center; display: block;}
+
+/* --- الفوتر --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(0,0,0,0.9);
+    margin-top: auto;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (تعديلات الموبايل)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* تعديل القائمة لتصبح عمودية */
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        display: block;
+        padding: 8px 12px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        font-size: 0.85rem;
+    }
+
+    /* تعديل العناوين الكبيرة */
+    h1 {
+        font-size: 1.8rem;
+        margin: 20px 0;
+    }
+
+    h2 { font-size: 1.3rem; }
+
+    /* تعديل المسافات للحاوية */
+    .container, .downloads-container {
+        padding: 0 15px;
+        margin: 20px auto;
+        gap: 20px;
+    }
+
+    /* تحسين ظهور البطاقات */
+    .card, .download-card {
+        padding: 20px;
+    }
+    
+    /* زر الرجوع في صفحة التحميل */
+    .back-btn {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+}
